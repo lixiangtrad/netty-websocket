@@ -1,0 +1,21 @@
+# idea ignore dir
+.idea
+target
+
+# idea ignore file
+*.iml
+dependency-reduced-pom.xml
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# else
+.springBeans
