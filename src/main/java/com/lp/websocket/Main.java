@@ -14,10 +14,17 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class Main {
 
     public static void main(String[] args) {
+        /**
+         *  初始化线程组,构建线程组的时候，如果不传递参数，则默认构建的线程组线程数是CPU核心数量。
+         *  bossGroup监听线程组，监听客户端请求
+         *  workGroup处理客户端相关操作线程组，负责处理与客户端的数据通讯
+         */
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
         try {
+            // 初始化服务的配置
             ServerBootstrap b = new ServerBootstrap();
+            //绑定线程组
             b.group(bossGroup, workGroup);
             b.channel(NioServerSocketChannel.class);
             b.childHandler(new MyWebSocketChannelHandler());
