@@ -14,6 +14,9 @@ import java.util.Scanner;
  * <li>Date: 2019-05-17 15:10</li>
  */
 public class AioClient {
+    /**
+     * 通道
+     */
     private AsynchronousSocketChannel channel;
 
     public AioClient(String host, int port){
