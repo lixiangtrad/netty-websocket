@@ -1,10 +1,10 @@
 package com.lp.netty.fixedlength;
 
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class Server4FixedLengthHandler extends ChannelHandlerAdapter {
+public class Server4FixedLengthHandler extends ChannelInboundHandlerAdapter {
 	
 	// 业务处理逻辑
 	@Override

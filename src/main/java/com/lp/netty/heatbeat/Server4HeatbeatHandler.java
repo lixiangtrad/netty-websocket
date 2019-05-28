@@ -6,17 +6,17 @@
  */
 package com.lp.netty.heatbeat;
 
-import com.sxt.utils.HeatbeatMessage;
+import com.lp.utils.HeatbeatMessage;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Sharable
-public class Server4HeatbeatHandler extends ChannelHandlerAdapter {
+public class Server4HeatbeatHandler extends ChannelInboundHandlerAdapter {
 	
 	private static List<String> credentials = new ArrayList<>();
 	private static final String HEATBEAT_SUCCESS = "SERVER_RETURN_HEATBEAT_SUCCESS";

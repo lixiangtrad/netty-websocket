@@ -12,12 +12,24 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+/**
+ * <p/>
+ * <li>Description: server服务端</li>
+ * <li>@author: lipan@cechealth.cn</li>
+ * <li>Date: 2019-05-27 22:42</li>
+ */
 public class Server4HelloWorld {
-	// 监听线程组，监听客户端请求
+	/**
+	 * 监听线程组，监听客户端请求
+	 */
 	private EventLoopGroup acceptorGroup = null;
-	// 处理客户端相关操作线程组，负责处理与客户端的数据通讯
+	/**
+	 * 处理客户端相关操作线程组，负责处理与客户端的数据通讯
+	 */
 	private EventLoopGroup clientGroup = null;
-	// 服务启动相关配置信息
+	/**
+	 * 服务启动相关配置信息
+	 */
 	private ServerBootstrap bootstrap = null;
 	public Server4HelloWorld(){
 		init();
@@ -48,7 +60,7 @@ public class Server4HelloWorld {
 	 */
 	public ChannelFuture doAccept(int port, final ChannelHandler... acceptorHandlers) throws InterruptedException{
 		
-		/*
+		/**
 		 * childHandler是服务的Bootstrap独有的方法。是用于提供处理对象的。
 		 * 可以一次性增加若干个处理逻辑。是类似责任链模式的处理方式。
 		 * 增加A，B两个处理逻辑，在处理客户端请求数据的时候，根据A-》B顺序依次处理。
@@ -66,9 +78,12 @@ public class Server4HelloWorld {
 				ch.pipeline().addLast(acceptorHandlers);
 			}
 		});
-		// bind方法 - 绑定监听端口的。ServerBootstrap可以绑定多个监听端口。 多次调用bind方法即可
-		// sync - 开始监听逻辑。 返回一个ChannelFuture。 返回结果代表的是监听成功后的一个对应的未来结果
-		// 可以使用ChannelFuture实现后续的服务器和客户端的交互。
+
+		/**
+		 * bind方法 - 绑定监听端口的。ServerBootstrap可以绑定多个监听端口。 多次调用bind方法即可
+		 * sync - 开始监听逻辑。 返回一个ChannelFuture。 返回结果代表的是监听成功后的一个对应的未来结果
+		 * 可以使用ChannelFuture实现后续的服务器和客户端的交互。
+		 */
 		ChannelFuture future = bootstrap.bind(port).sync();
 		return future;
 	}
@@ -101,7 +116,6 @@ public class Server4HelloWorld {
 					e.printStackTrace();
 				}
 			}
-			
 			if(null != server){
 				server.release();
 			}

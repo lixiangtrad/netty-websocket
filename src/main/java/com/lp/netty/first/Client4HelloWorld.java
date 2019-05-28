@@ -17,8 +17,11 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 因为客户端是请求的发起者，不需要监听。
- * 只需要定义唯一的一个线程组即可。
+ * <p/>
+ * <li>Description: 因为客户端是请求的发起者，不需要监听。
+ * 					只需要定义唯一的一个线程组即可。</li>
+ * <li>@author: lipan@cechealth.cn</li>
+ * <li>Date: 2019-05-27 22:42</li>
  */
 public class Client4HelloWorld {
 	

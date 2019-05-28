@@ -20,19 +20,21 @@ public class BioThreadPoolServer {
         int port = CommonUtils.genPort(args);
 
         ServerSocket server = null;
+        //创建一个固定的线程池
         ExecutorService service = Executors.newFixedThreadPool(50);
 
-        try{
+        try {
+            //开启服务
             server = new ServerSocket(port);
             System.out.println("server started!");
-            while(true){
+            while (true) {
                 Socket socket = server.accept();
-
+                //调用handler处理类
                 service.execute(new Handler(socket));
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {//关闭流
             CommonUtils.closeServer(server);
         }
     }

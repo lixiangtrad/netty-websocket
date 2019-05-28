@@ -15,11 +15,11 @@ import java.util.Scanner;
 public class AioServerHandler implements CompletionHandler<AsynchronousSocketChannel, AioServer> {
 
     /**
-     * 业务处理逻辑， 当请求到来后，监听成功，应该做什么。
+     * 业务处理逻辑，
+     * 当请求到来后，监听成功，应该做什么。
      * 一定要实现的逻辑： 为下一次客户端请求开启监听。accept方法调用。
-     * result参数 ： 就是和客户端直接建立关联的通道。
-     *  无论BIO、NIO、AIO中，一旦连接建立，两端是平等的。
-     *  result中有通道中的所有相关数据。如：OS操作系统准备好的读取数据缓存，或等待返回数据的缓存。
+     * result参数 ： 就是和客户端直接建立关联的通道。无论BIO、NIO、AIO中，一旦连接建立，两端是平等的。
+     * result中有通道中的所有相关数据。如：OS操作系统准备好的读取数据缓存，或等待返回数据的缓存。
      */
     @Override
     public void completed(AsynchronousSocketChannel result, AioServer attachment) {
@@ -54,16 +54,12 @@ public class AioServerHandler implements CompletionHandler<AsynchronousSocketCha
             // result.write(buffer).get(); // 调用get代表服务端线程阻塞，等待写操作完成
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        }/* catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		}*/
+        }
     }
 
     private void doRead(final AsynchronousSocketChannel channel){
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-        /*
+        /**
          * 异步读操作， read(Buffer destination, A attachment,
          *                    CompletionHandler<Integer, ? super A> handler)
          * destination - 目的地， 是处理客户端传递数据的中转缓存。 可以不使用。

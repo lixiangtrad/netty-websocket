@@ -10,7 +10,7 @@ import java.net.Socket;
 
 /**
  * <p/>
- * <li>Description: TODO</li>
+ * <li>Description: BIO编程模型中处理器</li>
  * <li>@author: lipan@cechealth.cn</li>
  * <li>Date: 2019-05-17 15:28</li>
  */
@@ -36,6 +36,7 @@ public class Handler implements Runnable{
                     break;
                 }
                 System.out.println(readMessage);
+                //服务端回写消息
                 writer.println("server recive : " + readMessage);
                 writer.flush();
             }

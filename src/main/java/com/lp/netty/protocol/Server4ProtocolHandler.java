@@ -8,11 +8,11 @@ package com.lp.netty.protocol;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler.Sharable;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 @Sharable
-public class Server4ProtocolHandler extends ChannelHandlerAdapter {
+public class Server4ProtocolHandler extends ChannelInboundHandlerAdapter {
 	
 	// 业务处理逻辑
 	@Override

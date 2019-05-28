@@ -6,7 +6,7 @@
  */
 package com.lp.netty.serialized;
 
-import com.sxt.utils.SerializableFactory4Marshalling;
+import com.lp.utils.SerializableFactory4Marshalling;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

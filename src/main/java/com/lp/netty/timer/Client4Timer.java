@@ -6,8 +6,8 @@
  */
 package com.lp.netty.timer;
 
-import com.sxt.utils.RequestMessage;
-import com.sxt.utils.SerializableFactory4Marshalling;
+import com.lp.utils.RequestMessage;
+import com.lp.utils.SerializableFactory4Marshalling;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -87,7 +87,7 @@ public class Client4Timer {
 			TimeUnit.SECONDS.sleep(5);
 			
 			future = client.getChannelFuture("localhost", 9999);
-			RequestMessage msg = new RequestMessage(new Random().nextLong(), 
+			RequestMessage msg = new RequestMessage(new Random().nextLong(),
 					"test", new byte[0]);
 			future.channel().writeAndFlush(msg);
 		}catch(Exception e){

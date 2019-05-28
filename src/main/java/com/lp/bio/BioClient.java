@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  * <p/>
- * <li>Description: TODO</li>
+ * <li>Description: BIO模型客户端</li>
  * <li>@author: lipan@cechealth.cn</li>
  * <li>Date: 2019-05-17 15:12</li>
  */

@@ -34,7 +34,7 @@ public class AioServer {
             System.out.println("server starting at port : " + port + " ...");
             // 定长线程池
             service = Executors.newFixedThreadPool(4);
-			/* 使用线程组
+			/** 使用线程组
 			group = AsynchronousChannelGroup.withThreadPool(service);
 			serverChannel = AsynchronousServerSocketChannel.open(group);
 			*/
@@ -43,10 +43,12 @@ public class AioServer {
             // 绑定监听端口， 服务器启动成功，但是未监听请求。
             serverChannel.bind(new InetSocketAddress(port));
             System.out.println("server started.");
-            // 开始监听
-            // accept(T attachment, CompletionHandler<AsynchronousSocketChannel, ? super T>)
-            // AIO开发中，监听是一个类似递归的监听操作。每次监听到客户端请求后，都需要处理逻辑开启下一次的监听。
-            // 下一次的监听，需要服务器的资源继续支持。
+            /**
+             * 开始监听
+             * accept(T attachment, CompletionHandler<AsynchronousSocketChannel, ? super T>)
+             * AIO开发中，监听是一个类似递归的监听操作。每次监听到客户端请求后，都需要处理逻辑开启下一次的监听。
+             * 下一次的监听，需要服务器的资源继续支持。
+             */
             serverChannel.accept(this, new AioServerHandler());
             try {
                 TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);

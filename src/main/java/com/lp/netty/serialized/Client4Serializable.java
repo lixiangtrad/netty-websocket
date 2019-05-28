@@ -6,9 +6,10 @@
  */
 package com.lp.netty.serialized;
 
-import com.sxt.utils.GzipUtils;
-import com.sxt.utils.RequestMessage;
-import com.sxt.utils.SerializableFactory4Marshalling;
+
+import com.lp.utils.GzipUtils;
+import com.lp.utils.RequestMessage;
+import com.lp.utils.SerializableFactory4Marshalling;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -65,7 +66,7 @@ public class Client4Serializable {
 			String attachment = "test attachment";
 			byte[] attBuf = attachment.getBytes();
 			attBuf = GzipUtils.zip(attBuf);
-			RequestMessage msg = new RequestMessage(new Random().nextLong(), 
+			RequestMessage msg = new RequestMessage(new Random().nextLong(),
 					"test", attBuf);
 			future.channel().writeAndFlush(msg);
 			TimeUnit.SECONDS.sleep(1);

@@ -1,10 +1,10 @@
 package com.lp.netty.fixedlength;
 
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 
-public class Client4FixedLengthHandler extends ChannelHandlerAdapter {
+public class Client4FixedLengthHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
