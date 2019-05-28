@@ -24,16 +24,16 @@ import java.util.concurrent.TimeUnit;
  * <li>Date: 2019-05-27 22:42</li>
  */
 public class Client4HelloWorld {
-	
+
 	// 处理请求和处理服务端响应的线程组
 	private EventLoopGroup group = null;
 	// 客户端启动相关配置信息
 	private Bootstrap bootstrap = null;
-	
+
 	public Client4HelloWorld(){
 		init();
 	}
-	
+
 	private void init(){
 		group = new NioEventLoopGroup();
 		bootstrap = new Bootstrap();
@@ -42,7 +42,7 @@ public class Client4HelloWorld {
 		// 设定通讯模式为NIO
 		bootstrap.channel(NioSocketChannel.class);
 	}
-	
+
 	public ChannelFuture doRequest(String host, int port, final ChannelHandler... handlers) throws InterruptedException{
 		/*
 		 * 客户端的Bootstrap没有childHandler方法。只有handler方法。
@@ -60,18 +60,18 @@ public class Client4HelloWorld {
 		ChannelFuture future = this.bootstrap.connect(host, port).sync();
 		return future;
 	}
-	
+
 	public void release(){
 		this.group.shutdownGracefully();
 	}
-	
+
 	public static void main(String[] args) {
 		Client4HelloWorld client = null;
 		ChannelFuture future = null;
 		try{
 			client = new Client4HelloWorld();
 			future = client.doRequest("localhost", 9999, new Client4HelloWorldHandler());
-			
+
 			Scanner s = null;
 			while(true){
 				s = new Scanner(System.in);
@@ -80,11 +80,11 @@ public class Client4HelloWorld {
 				if("exit".equals(line)){
 					// addListener - 增加监听，当某条件满足的时候，触发监听器。
 					// ChannelFutureListener.CLOSE - 关闭监听器，代表ChannelFuture执行返回后，关闭连接。
-					future.channel().writeAndFlush(Unpooled.copiedBuffer(line.getBytes("UTF-8")))
+					future.channel().writeAndFlush(line+"\r\n")
 						.addListener(ChannelFutureListener.CLOSE);
 					break;
 				}
-				future.channel().writeAndFlush(Unpooled.copiedBuffer(line.getBytes("UTF-8")));
+				future.channel().writeAndFlush(line);
 				TimeUnit.SECONDS.sleep(1);
 			}
 		}catch(Exception e){
@@ -102,5 +102,5 @@ public class Client4HelloWorld {
 			}
 		}
 	}
-	
+
 }

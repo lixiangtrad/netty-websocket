@@ -99,7 +99,7 @@ public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {
      * @throws Exception
      */
     @Override
-    protected void messageReceived(ChannelHandlerContext context, Object msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext context, Object msg) throws Exception {
         //处理客户端向服务端发起http握手请求的业务
         if (msg instanceof FullHttpRequest) {
             handHttpRequest(context, (FullHttpRequest) msg);
@@ -189,4 +189,5 @@ public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {
             f.addListener(ChannelFutureListener.CLOSE);
         }
     }
+
 }

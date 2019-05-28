@@ -8,7 +8,8 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 
 /**
  * <p/>
- * <li>Description: 初始化连接时候的各个组件</li>
+ * <li>Description: 初始化连接时候的各个组件
+ *                  Netty服务端 过滤器</li>
  * <li>@author: lipan@cechealth.cn</li>
  * <li>Date: 2019-01-27 16:32</li>
  */

@@ -1,14 +1,3 @@
-/**
- * @Sharable注解 -
- * 代表当前Handler是一个可以分享的处理器。也就意味着，服务器注册此Handler后，可以分享给多个客户端同时使用。
- * 如果不使用注解描述类型，则每次客户端请求时，必须为客户端重新创建一个新的Handler对象。
- * 如果handler是一个Sharable的，一定避免定义可写的实例变量。
- * bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
- * @Override protected void initChannel(SocketChannel ch) throws Exception {
- * ch.pipeline().addLast(new XxxHandler());
- * }
- * });
- */
 package com.lp.netty.first;
 
 import io.netty.buffer.ByteBuf;
@@ -23,6 +12,15 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  * <li>Description: Netty服务端channel处理逻辑</li>
  * <li>@author: lipan@cechealth.cn</li>
  * <li>Date: 2019-05-27 22:42</li>
+ * Sharable注解 -
+ *  * 代表当前Handler是一个可以分享的处理器。也就意味着，服务器注册此Handler后，可以分享给多个客户端同时使用。
+ *  * 如果不使用注解描述类型，则每次客户端请求时，必须为客户端重新创建一个新的Handler对象。
+ *  * 如果handler是一个Sharable的，一定避免定义可写的实例变量。
+ *  * bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
+ *  * @Override protected void initChannel(SocketChannel ch) throws Exception {
+ *  * ch.pipeline().addLast(new XxxHandler());
+ *  * }
+ *  * });
  */
 @ChannelHandler.Sharable
 public class Server4HelloWorldHandler extends ChannelInboundHandlerAdapter {

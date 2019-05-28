@@ -2,11 +2,13 @@ package com.lp.netty.timer;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 
-public class Client4TimerHandler extends ChannelHandlerAdapter {
+public class Client4TimerHandler extends SimpleChannelInboundHandler<String> {
+
 
 	@Override
-	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+	protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
 		System.out.println("from server : ClassName - " + msg.getClass().getName()
 				+ " ; message : " + msg.toString());
 	}

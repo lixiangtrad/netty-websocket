@@ -10,15 +10,16 @@ import com.lp.utils.ResponseMessage;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 
 @Sharable
-public class Server4TimerHandler extends ChannelHandlerAdapter {
+public class Server4TimerHandler extends SimpleChannelInboundHandler<String> {
 	
 	// 业务处理逻辑
 	@Override
-	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+	protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
 		System.out.println("from client : ClassName - " + msg.getClass().getName()
-				+ " ; message : " + msg.toString());
+				+ " ; message : " + msg);
 		ResponseMessage response = new ResponseMessage(0L, "test response");
 		ctx.writeAndFlush(response);
 	}
