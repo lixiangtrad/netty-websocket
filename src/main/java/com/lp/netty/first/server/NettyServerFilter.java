@@ -18,6 +18,16 @@ import io.netty.handler.codec.string.StringEncoder;
  */
 public class NettyServerFilter extends ChannelInitializer<SocketChannel> {
 
+    /**
+     * ChannelInitializer - 用于提供处理器的一个模型对象。
+     * 其中定义了一个方法，initChannel方法。
+     * 方法是用于初始化处理逻辑责任链条的。
+     * 可以保证服务端的Bootstrap只初始化一次处理器，尽量提供处理逻辑的重用。
+     * 避免反复的创建处理器对象。节约资源开销。
+     *
+     * @param ch
+     * @throws Exception
+     */
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline ph = ch.pipeline();

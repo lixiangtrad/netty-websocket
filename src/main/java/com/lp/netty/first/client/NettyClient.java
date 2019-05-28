@@ -39,6 +39,12 @@ public class NettyClient {
             bootstrap.group(group);
             // 设定通讯模式为NIO
             bootstrap.channel(NioSocketChannel.class);
+            /**
+             * 客户端的Bootstrap没有childHandler方法。只有handler方法。
+             * 方法含义等同ServerBootstrap中的childHandler
+             * 在客户端必须绑定处理器，也就是必须调用handler方法。
+             * 服务器必须绑定处理器，必须调用childHandler方法。
+             */
             bootstrap.handler(new NettyClientFilter());
             ch = bootstrap.connect(host, port).sync().channel();
             Scanner s = null;

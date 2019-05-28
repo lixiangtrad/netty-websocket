@@ -59,11 +59,6 @@ public class NettyServer {
              * 可以一次性增加若干个处理逻辑。是类似责任链模式的处理方式。
              * 增加A，B两个处理逻辑，在处理客户端请求数据的时候，根据A-》B顺序依次处理。
              *
-             * ChannelInitializer - 用于提供处理器的一个模型对象。
-             *  其中定义了一个方法，initChannel方法。
-             *   方法是用于初始化处理逻辑责任链条的。
-             *   可以保证服务端的Bootstrap只初始化一次处理器，尽量提供处理逻辑的重用。
-             *   避免反复的创建处理器对象。节约资源开销。
              */
             bootstrap.childHandler(new NettyServerFilter());
             /**
