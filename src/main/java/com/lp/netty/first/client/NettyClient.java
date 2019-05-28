@@ -53,8 +53,8 @@ public class NettyClient {
                     System.out.println("客户端关闭连接");
                     break;
                 }
-                ch.writeAndFlush(line);
-                System.out.println("客户端发送数据:" + line);
+                ch.writeAndFlush(line+"\r\n");
+                System.out.println("客户端发送数据:" + line+"  \r  \n");
                 TimeUnit.SECONDS.sleep(1);
             }
 

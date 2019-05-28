@@ -1,6 +1,5 @@
 package com.lp.netty.first.server;
 
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -32,7 +31,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<String> {
         }
         String line = "server message to client!";
         // 写操作自动释放缓存，避免内存溢出问题。
-        ctx.writeAndFlush(line+"\n");
+        ctx.writeAndFlush(line+"  \n");
     }
 
 

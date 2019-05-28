@@ -80,7 +80,7 @@ public class Client4HelloWorld {
 				if("exit".equals(line)){
 					// addListener - 增加监听，当某条件满足的时候，触发监听器。
 					// ChannelFutureListener.CLOSE - 关闭监听器，代表ChannelFuture执行返回后，关闭连接。
-					future.channel().writeAndFlush(line+"\r\n")
+					future.channel().writeAndFlush(line)
 						.addListener(ChannelFutureListener.CLOSE);
 					break;
 				}
