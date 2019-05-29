@@ -1,6 +1,6 @@
 package com.lp.netty.heatbeat;
 
-import com.lp.utils.HeatbeatMessage;
+import com.lp.netty.utils.HeatbeatMessage;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;

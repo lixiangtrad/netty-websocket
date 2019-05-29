@@ -6,7 +6,7 @@
  */
 package com.lp.netty.timer;
 
-import com.lp.utils.SerializableFactory4Marshalling;
+import com.lp.netty.utils.SerializableFactory4Marshalling;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

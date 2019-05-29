@@ -1,6 +1,6 @@
 package com.lp.bio;
 
-import com.lp.utils.CommonUtils;
+import com.lp.netty.utils.CommonUtils;
 
 import java.net.ServerSocket;
 import java.net.Socket;

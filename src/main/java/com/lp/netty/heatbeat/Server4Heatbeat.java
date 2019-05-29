@@ -6,7 +6,7 @@
  */
 package com.lp.netty.heatbeat;
 
-import com.lp.utils.SerializableFactory4Marshalling;
+import com.lp.netty.utils.SerializableFactory4Marshalling;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -41,14 +41,18 @@ public class Server4Heatbeat {
 			.option(ChannelOption.SO_RCVBUF, 16*1024)
 			.option(ChannelOption.SO_KEEPALIVE, true);
 	}
+
+
 	public ChannelFuture doAccept(int port) throws InterruptedException{
 		
 		bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
 
 			@Override
 			protected void initChannel(SocketChannel ch) throws Exception {
+				//解码器
 				ch.pipeline().addLast(SerializableFactory4Marshalling.buildMarshallingDecoder());
 				ch.pipeline().addLast(SerializableFactory4Marshalling.buildMarshallingEncoder());
+				//处理核心类
 				ch.pipeline().addLast(new Server4HeatbeatHandler());
 			}
 		});
