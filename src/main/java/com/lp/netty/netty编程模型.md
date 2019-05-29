@@ -53,9 +53,13 @@ netty使用tcp/ip协议传输数据。而tcp/ip协议是类似水流一样的数
 
 **4.2.1 定长数据流** 
 
+[定长粘包Demo](/src/main/java/com/lp/netty/fixedlength)
+
 客户端和服务器，提前协调好，每个消息长度固定。(如:长度10)。如果客户端或服务器写出的数据不足10，则使用空白字符补足(如:使用空格)。
 
 **4.2.2 特殊结束符** 
+
+[特殊字符粘包Demo](/src/main/java/com/lp/netty/delimiter)
 
 客户端和服务器，协商定义一个特殊的分隔符号，分隔符号长度自定义。如:‘#’、‘$_$’、
 
@@ -63,15 +67,19 @@ netty使用tcp/ip协议传输数据。而tcp/ip协议是类似水流一样的数
 
 **4.2.3 协议** 
 
+[协议粘包Demo](/src/main/java/com/lp/netty/protocol)
+
 相对最成熟的数据传递方式。有服务器的开发者提供一个固定格式的协议标准。客户端和服务器发送数据和接受数据的时候，都依据协议制定和解析消息。
 
 **4.3 序列化对象** 
 
-JBossMarshalling序列化
+[序列化对象粘包Demo](/src/main/java/com/lp/netty/serialized)
 
 Java是面向对象的开发语言。传递的数据如果是Java对象，应该是最方便且可靠。
 
 **4.4 定时断线重连** 
+
+[channel定时重连Demo](/src/main/java/com/lp/netty/timer)
 
 客户端断线重连机制。
 
@@ -82,6 +90,8 @@ Java是面向对象的开发语言。传递的数据如果是Java对象，应该
 ![](/pic/WX20190528-093839.png)
 
 **4.5 心跳监测** 
+
+[心跳检测Demo](/src/main/java/com/lp/netty/heatbeat)
 
 使用定时发送消息的方式，实现硬件检测，达到心态检测的目的。
 
@@ -96,6 +106,8 @@ Java是面向对象的开发语言。传递的数据如果是Java对象，应该
 解压需要的操作系统文件，将操作系统文件赋值到${Java_home}/bin目录中。
 
 4.6HTTP协议处理 
+
+[HTTP协议处理Demo](/src/main/java/com/lp/netty/http)
 
 使用Netty服务开发。实现HTTP协议处理逻辑。
 
